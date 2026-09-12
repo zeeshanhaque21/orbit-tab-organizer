@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orbit Settings</title>
+    <link rel="stylesheet" href="./shared/theme.css" />
+    <link rel="stylesheet" href="./options.css" />
+  </head>
+  <body>
+    <div class="opt-root">
+      <header class="opt-header">
+        <div class="opt-header-inner">
+          <div class="opt-brand">
+            <span id="opt-logo" class="opt-logo" aria-hidden="true"></span>
+            <div class="opt-brand-text">
+              <h1 class="opt-title">Orbit Settings</h1>
+              <p class="opt-sub">
+                No account, no tokens, no telemetry. Everything runs on your machine.
+              </p>
+            </div>
+          </div>
+          <div class="opt-header-right">
+            <span id="save-status" class="save-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="opt-shell">
+        <nav id="opt-nav" class="opt-nav" aria-label="Settings sections"></nav>
+        <main id="opt-main" class="opt-main"></main>
+      </div>
+    </div>
+
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>

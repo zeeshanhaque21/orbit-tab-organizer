@@ -1,0 +1,29 @@
+# Reference material used during development.
+# Not ours to redistribute, and not part of the product.
+_reference/
+
+# Comparison harnesses — they exist only to diff against another implementation,
+# so they have no meaning in a standalone repo. Kept locally, never published.
+scripts/ab.mjs
+scripts/blind.mjs
+scripts/archive/
+
+# Test output: screenshots, JSON reports, logs
+_verify/
+
+# Build output
+dist/
+orbit-extension/
+*.zip
+
+# Dependencies and caches
+node_modules/
+.npm-cache/
+
+# Vite writes a bundled copy of the config to the project root and does not
+# remove it when the process is killed, so these accumulate.
+vite.config.ts.timestamp-*.mjs
+
+# Editor / OS
+.DS_Store
+*.log

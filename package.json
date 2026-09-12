@@ -1,0 +1,43 @@
+{
+  "name": "ato-clone",
+  "private": true,
+  "version": "2.10.0",
+  "type": "module",
+  "description": "AI tab organizer - group tabs by category, recency or your own rules. No account required.",
+  "scripts": {
+    "build": "npm run typecheck && npm run clean && vite build && npm run lint:build && npm run lint:claims",
+    "build:only": "npm run clean && vite build",
+    "clean": "node scripts/clean.mjs",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit",
+    "lint:build": "node scripts/lint-build.mjs",
+    "lint:claims": "node scripts/claims.mjs",
+    "check:profile": "node scripts/check-profile.mjs",
+    "test": "vitest run --reporter=default 2>&1 | tee _verify/unit.log",
+    "test:watch": "vitest",
+    "e2e": "node scripts/e2e.mjs",
+    "e2e:popup": "node scripts/popup-e2e.mjs",
+    "e2e:hub": "node scripts/hub-e2e.mjs",
+    "e2e:options": "node scripts/options-e2e.mjs",
+    "e2e:commands": "node scripts/commands-e2e.mjs",
+    "e2e:stress": "node scripts/stress-e2e.mjs",
+    "e2e:offline": "node scripts/offline-e2e.mjs",
+    "e2e:ai": "node scripts/ai-e2e.mjs",
+    "e2e:all": "npm run check:profile && npm run e2e && npm run e2e:popup && npm run e2e:hub && npm run e2e:options && npm run e2e:commands && npm run e2e:stress && npm run e2e:offline && npm run e2e:ai",
+    "ab": "node scripts/ab.mjs",
+    "blind": "node scripts/blind.mjs",
+    "icons": "node scripts/icons.mjs",
+    "package": "node scripts/package.mjs",
+    "verify:package": "node scripts/verify-package.mjs",
+    "progress": "node scripts/progress.mjs",
+    "verify": "npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "@types/node": "^22.20.2",
+    "playwright-core": "^1.63.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}

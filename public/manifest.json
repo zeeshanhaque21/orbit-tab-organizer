@@ -1,0 +1,81 @@
+{
+  "manifest_version": 3,
+  "name": "Orbit - AI Tab Organizer | Smart Tab Manager",
+  "short_name": "Orbit",
+  "version": "2.10.0",
+  "description": "AI tab organizer & smart tab manager. Auto-group tabs by category, last access, or usage. Clean duplicates and search instantly. No account required.",
+  "author": "Orbit",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Orbit - AI Tab Organizer",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "64": "icons/icon64.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "tabGroups",
+    "tabs",
+    "storage",
+    "contextMenus",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.groq.com/*",
+    "https://openrouter.ai/*"
+  ],
+  "optional_host_permissions": ["<all_urls>"],
+  "commands": {
+    "orbit_toggle_collapse": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K",
+        "mac": "Command+Shift+K"
+      },
+      "description": "Toggle collapse/expand tab groups"
+    },
+    "orbit_open_hub": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Open Orbit Hub"
+    },
+    "orbit_rename_tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "Rename current tab"
+    },
+    "orbit_search_tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Search tabs"
+    }
+  }
+}
