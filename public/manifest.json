@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Orbit - AI Tab Organizer | Smart Tab Manager",
+  "name": "Orbit - AI Tab Organizer",
   "short_name": "Orbit",
-  "version": "2.10.0",
-  "description": "AI tab organizer & smart tab manager. Auto-group tabs by category, last access, or usage. Clean duplicates and search instantly. No account required.",
+  "version": "1.0.0",
+  "description": "Group your tabs by what they are about, by how recently you used them, or by rules you write yourself. Works offline. No account.",
   "author": "Orbit",
   "minimum_chrome_version": "116",
   "icons": {

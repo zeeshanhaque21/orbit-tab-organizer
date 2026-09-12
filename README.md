@@ -187,6 +187,7 @@ npm run e2e:ai        # 14 checks of the AI path through the built extension
 npm run e2e:all       # all of the above
 npm run check:profile # the two browser-profile lifecycle claims
 npm run icons         # regenerate the icon set
+npm run store:shots   # capture Chrome Web Store screenshots at 1280x800
 npm run package       # zip dist/ into orbit-extension.zip
 npm run verify:package # load the zip itself and check it works
 npm run progress      # regenerate progress.html from the reports
@@ -347,6 +348,22 @@ fixing instances and write the check — which is what `lint:claims` is.
   reaches them. The test prints this as a note rather than faking a pass.
 - The options page's own UI interactions are exercised indirectly through the
   message layer.
+
+---
+
+## Publishing
+
+`npm run package` produces the uploadable zip, and `npm run store:shots`
+captures the three screenshots the Chrome Web Store requires at 1280×800.
+
+`STORE.md` holds the listing copy, the permission justifications and the
+submission checklist. `PRIVACY.md` is the policy the store requires — the short
+version is that nothing is collected, and the only network traffic is the AI
+call you configure yourself.
+
+The submission itself is manual: it needs a developer account with a one-time
+fee and a signed-in human in the Web Store dashboard. There is no API for
+creating a new item.
 
 ---
 

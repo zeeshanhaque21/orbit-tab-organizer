@@ -1996,7 +1996,9 @@ function renderData(): HTMLElement {
 function exportSettings(includeKey: boolean): void {
   const payload = {
     app: "orbit",
-    version: "2.10.0",
+    // read from the manifest rather than repeated here, so an export can never
+    // claim a version the build does not have
+    version: chrome.runtime.getManifest().version,
     exportedAt: new Date().toISOString(),
     settings: {
       ...state.settings,

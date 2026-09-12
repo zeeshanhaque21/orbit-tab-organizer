@@ -151,7 +151,7 @@ export function installFakeChrome(): FakeChrome {
     runtime: {
       ...(existing.runtime as object),
       id: "test",
-      getManifest: () => ({ version: "2.10.0" }),
+      getManifest: () => ({ version: "1.0.0" }),
       getURL: (p: string) => `chrome-extension://test/${p}`,
       onMessage: listener(),
       onInstalled: listener(),

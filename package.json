@@ -1,7 +1,7 @@
 {
-  "name": "ato-clone",
+  "name": "orbit-tab-organizer",
   "private": true,
-  "version": "2.10.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "AI tab organizer - group tabs by category, recency or your own rules. No account required.",
   "scripts": {
@@ -27,6 +27,7 @@
     "ab": "node scripts/ab.mjs",
     "blind": "node scripts/blind.mjs",
     "icons": "node scripts/icons.mjs",
+    "store:shots": "node scripts/store-shots.mjs",
     "package": "node scripts/package.mjs",
     "verify:package": "node scripts/verify-package.mjs",
     "progress": "node scripts/progress.mjs",
