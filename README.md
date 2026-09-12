@@ -1,5 +1,7 @@
 # Orbit — AI tab organizer
 
+[![CI](https://github.com/zeeshanhaque21/orbit-tab-organizer/actions/workflows/ci.yml/badge.svg)](https://github.com/zeeshanhaque21/orbit-tab-organizer/actions/workflows/ci.yml)
+
 A Manifest V3 Chrome extension that groups your tabs by meaning, by recency, or
 by rules you define. No account, no sign-in, no telemetry, and no network
 required unless you want the model-backed path.
@@ -213,6 +215,11 @@ failure, and it is invisible from inside the test.
 
 Every number below comes from a suite that runs against a real browser and
 asserts on real `chrome.*` state, not on what the UI claims.
+
+CI runs the deterministic half on every push — typecheck, the 241 unit tests, the
+build and the four guards, plus a packaged-artifact check. The browser suites are
+run locally: they need a *headed* Chromium, because an unpacked MV3 extension
+needs a real window, and the scale suite alone takes ten minutes.
 
 | Suite | What it proves |
 |---|---|

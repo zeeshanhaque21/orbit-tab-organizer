@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Typecheck, tests and build guards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # typecheck -> 241 unit tests -> vite build -> lint:build -> lint:claims
+      - name: Verify
+        run: npm run verify
+
+      # Fails the job if the package does not load, which `dist/` being healthy
+      # does not prove: asset pruning or chunk-splitting mistakes leave dist/
+      # fine and the zip broken.
+      - name: Package and check the artifact
+        run: |
+          npm run package
+          ls -l orbit-extension.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: orbit-extension
+          path: orbit-extension.zip
+          if-no-files-found: error
+
+# The browser suites (`npm run e2e:*`) are deliberately NOT here.
+#
+# They drive a *headed* Chromium with `--load-extension`, because an unpacked
+# MV3 extension needs a real window, and they resolve Playwright's macOS build
+# path. Porting them to a Linux runner means xvfb plus a platform-aware
+# executable lookup, and the scale suite alone runs for ten minutes. That is a
+# real piece of work with real flake risk, so it is not pretended at here —
+# run `npm run e2e:all` locally. What this job covers is everything that is
+# deterministic and fast, which is the part that should block a merge.
