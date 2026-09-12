@@ -190,6 +190,7 @@ npm run e2e:all       # all of the above
 npm run check:profile # the two browser-profile lifecycle claims
 npm run icons         # regenerate the icon set
 npm run store:shots   # capture Chrome Web Store screenshots at 1280x800
+npm run release       # upload and submit a new version to the Web Store
 npm run package       # zip dist/ into orbit-extension.zip
 npm run verify:package # load the zip itself and check it works
 npm run progress      # regenerate progress.html from the reports
@@ -368,9 +369,10 @@ submission checklist. `PRIVACY.md` is the policy the store requires — the shor
 version is that nothing is collected, and the only network traffic is the AI
 call you configure yourself.
 
-The submission itself is manual: it needs a developer account with a one-time
-fee and a signed-in human in the Web Store dashboard. There is no API for
-creating a new item.
+The first submission is manual: it needs a developer account with a one-time fee
+and a signed-in human in the Web Store dashboard, because the API has no method
+for creating an item. **Every release after that is `npm run release`** — upload
+and submit in one command, via a service account. See `STORE.md`.
 
 ---
 

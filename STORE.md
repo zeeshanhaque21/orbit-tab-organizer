@@ -13,25 +13,61 @@ Ready in this repository:
 - `PRIVACY.md` — the privacy policy the store requires
 - The listing copy and permission justifications below
 
-## Why this is manual
+## Why the first version is manual
 
 Publishing needs a signed-in human at
 <https://chrome.google.com/webstore/devconsole>:
 
 1. **A developer account with a one-time US$5 registration fee**, paid by card,
-   plus 2FA on the Google account. There is no way to do this on someone's
-   behalf, and no API for it.
-2. **A new item must be created in the dashboard.** The Chrome Web Store API can
-   upload and publish *updates* to an existing item using OAuth credentials, but
-   the first version has to be created through the web UI. That is the step that
-   cannot be scripted.
+   plus 2FA on the Google account. There is no API for this.
+2. **A new item must be created in the dashboard.** This is the hard blocker, and
+   it is worth stating precisely because it is easy to assume otherwise:
+
+   The Chrome Web Store API **v2** exposes exactly five methods —
+   `media.upload` ("upload a new package to an **existing item**"),
+   `publishers.items.fetchStatus`, `publishers.items.publish`,
+   `publishers.items.cancelSubmission`, and
+   `publishers.items.setPublishedDeployPercentage`. Every path is
+   `/v2/publishers/*/items/*`, so all of them require an item id that already
+   exists. **There is no create or insert method.** Checked against the official
+   REST reference rather than recalled.
 3. **Review by Google.** Typically a few days; longer for extensions that request
    host permissions, which this one does (`optional_host_permissions`).
 4. **Interactive declarations** — the data-usage form, permission justifications
    and a single-purpose statement, all answered in the dashboard.
 
-If you later want automated releases, the path is: publish v1.0.0 by hand, then
-use the Web Store API with a refresh token to push subsequent versions.
+## Every release after the first
+
+Once v1.0.0 exists, `npm run release` handles the rest — upload and submit for
+review in one command, using a service account so nothing is interactive.
+
+One-time setup:
+
+1. In the [Google Cloud Console](https://console.cloud.google.com), enable the
+   **Chrome Web Store API**.
+2. Create a **service account**. It needs no IAM roles.
+3. Create a **JSON key** for it and store the file outside this repository.
+4. In the Developer Dashboard, under **Account**, add the service account's
+   email. Only one service account can be linked per publisher.
+5. Note the **publisher ID** and the **item ID** from the dashboard.
+
+Then:
+
+```bash
+export CWS_SERVICE_ACCOUNT_JSON=/path/to/key.json
+export CWS_PUBLISHER_ID=...
+export CWS_ITEM_ID=...
+
+npm run release -- --status       # where does the item stand?
+npm run release -- --upload-only  # upload without submitting
+npm run release                   # upload and submit for review
+```
+
+No credential is read from the repository, and the script refuses to run with a
+clear message if any of the three variables is missing.
+
+That setup also makes CI-based releases possible, if you ever want them: the
+service account is a plain JSON key, so it can live in an Actions secret.
 
 ## Listing copy
 
@@ -140,6 +176,8 @@ Answer the dashboard's privacy form as follows:
 8. Fill in the permission justifications and the data-usage form.
 9. Choose visibility and regions.
 10. Submit for review.
+11. **After it is live**, do the service-account setup above so every future
+    version is `npm run release`.
 
 ### A note on the name
 
