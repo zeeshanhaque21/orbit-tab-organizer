@@ -2,46 +2,49 @@
 
 ## Status
 
-**Not submitted.** Everything that can be prepared without a human is prepared;
-the submission itself cannot be automated. See "Why this is manual" below.
+**Submitted for review** on 12 September 2026. Item
+`himaojaifonplmnflmbbboednghongdo`, publisher `zhaque.mail`. Status on the
+dashboard is `Pending review`; it publishes automatically once it passes.
 
-Ready in this repository:
+What was submitted:
 
-- `orbit-extension.zip` — the uploadable package (`npm run package`), 90.9 KB
-- `_verify/store/*.png` — three screenshots at exactly 1280×800
-  (`npm run store:shots`)
-- `PRIVACY.md` — the privacy policy the store requires
-- The listing copy and permission justifications below
+| Field | Value |
+|---|---|
+| Category | **Workflow & Planning** — *Productivity is disabled* in the dropdown (along with Lifestyle and Make Chrome Yours) |
+| Language | English (United States) |
+| Description | 3,082 characters, from the block below |
+| Store icon | `public/icons/icon128.png` |
+| Screenshots | 3, captured by `npm run store:shots` at 1280×800 |
+| Promo tiles | Small 440×280 and marquee 1400×560, from `npm run promo` |
+| Homepage / Support | the GitHub repo and its issues page |
+| Single purpose + 7 permission justifications | written out below |
+| Data usage | **Web history** and **Authentication information** |
+| Remote code | **No** — note it defaults to *Yes* and must be changed |
+| Visibility / payments / regions | Public, free of charge, all regions |
+| Privacy policy | the `PRIVACY.md` URL on GitHub |
 
-## Why the first version is manual
-
-Publishing needs a signed-in human at
-<https://chrome.google.com/webstore/devconsole>:
-
-1. **A developer account with a one-time US$5 registration fee**, paid by card,
-   plus 2FA on the Google account. There is no API for this.
-2. **A new item must be created in the dashboard.** This is the hard blocker, and
-   it is worth stating precisely because it is easy to assume otherwise:
-
-   The Chrome Web Store API **v2** exposes exactly five methods —
-   `media.upload` ("upload a new package to an **existing item**"),
-   `publishers.items.fetchStatus`, `publishers.items.publish`,
-   `publishers.items.cancelSubmission`, and
-   `publishers.items.setPublishedDeployPercentage`. Every path is
-   `/v2/publishers/*/items/*`, so all of them require an item id that already
-   exists. **There is no create or insert method.** Checked against the official
-   REST reference rather than recalled.
-3. **Review by Google.** Typically a few days; longer for extensions that request
-   host permissions, which this one does (`optional_host_permissions`).
-4. **Interactive declarations** — the data-usage form, permission justifications
-   and a single-purpose statement, all answered in the dashboard.
+One caveat worth knowing: the Web Store's user-data FAQ (question 10) asks for
+"a specific action clearly agreeing to the disclosure" as consent. Orbit shows a
+prominent in-product disclosure in the AI provider section, and configuring an
+endpoint is deliberate, but there is no separate consent checkbox. If review
+pushes back, that is the likely reason.
 
 ## Every release after the first
 
-Once v1.0.0 exists, `npm run release` handles the rest — upload and submit for
-review in one command, using a service account so nothing is interactive.
+`npm run release` uploads and submits a new version, using a service account so
+nothing is interactive. Setup is in "Service account" below.
 
-One-time setup:
+## Why the first version had to be manual
+
+The Chrome Web Store API **v2** exposes five methods — `media.upload`,
+`publishers.items.{fetchStatus,publish,cancelSubmission,setPublishedDeployPercentage}`
+— and every path is `/v2/publishers/*/items/*`. All of them require an item id
+that already exists. **There is no create method.** Checked against the official
+REST reference rather than recalled.
+
+## Service account
+
+One-time setup, so that every later release is one command:
 
 1. In the [Google Cloud Console](https://console.cloud.google.com), enable the
    **Chrome Web Store API**.
@@ -64,10 +67,8 @@ npm run release                   # upload and submit for review
 ```
 
 No credential is read from the repository, and the script refuses to run with a
-clear message if any of the three variables is missing.
-
-That setup also makes CI-based releases possible, if you ever want them: the
-service account is a plain JSON key, so it can live in an Actions secret.
+clear message if any of the three variables is missing. Because the credential is
+a plain JSON key, this also works from CI via an Actions secret.
 
 ## Listing copy
 
