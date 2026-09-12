@@ -18,7 +18,7 @@ What was submitted:
 | Promo tiles | Small 440×280 and marquee 1400×560, from `npm run promo` |
 | Homepage / Support | the GitHub repo and its issues page |
 | Single purpose + 7 permission justifications | written out below |
-| Data usage | **Web history** and **Authentication information** |
+| Data usage | **Web history** only — see the note below on why *Authentication information* was removed |
 | Remote code | **No** — note it defaults to *Yes* and must be changed |
 | Visibility / payments / regions | Public, free of charge, all regions |
 | Privacy policy | the `PRIVACY.md` URL on GitHub |
@@ -28,6 +28,30 @@ One caveat worth knowing: the Web Store's user-data FAQ (question 10) asks for
 prominent in-product disclosure in the AI provider section, and configuring an
 endpoint is deliberate, but there is no separate consent checkbox. If review
 pushes back, that is the likely reason.
+
+### Why "Authentication information" is *not* declared
+
+The first submission declared it, on the reasoning that Orbit stores the user's
+API key in `chrome.storage.local` and sends it as a `Bearer` token, and the FAQ
+defines "handle" broadly enough to cover that.
+
+It was removed, and the reasoning is worth keeping because it cuts the other way:
+
+**Every example in that category is a user-identity credential** — passwords,
+PINs, security questions, authentication cookies. Things that prove *who the
+user is*. Orbit has no account and never handles a user's own login. The key
+belongs to a third-party service the user brought with them, which makes it
+closer to a configuration secret than to authentication information about the
+user. The FAQ does not settle this case either way.
+
+**Web history stays declared regardless** of the AI provider, because tab URLs,
+titles and visit times are handled whether or not a model is configured, and that
+one is unambiguous.
+
+Note that the privacy form **locks while an item is under review**. Changing this
+after submission means withdrawing the submission first (the item's overflow menu
+has **Cancel review**), editing, and re-submitting — which resets the review
+clock.
 
 ## Every release after the first
 
