@@ -774,9 +774,30 @@ function renderAi(): HTMLElement {
     )
   }
 
+  /*
+   * The Chrome Web Store requires a prominent, in-product disclosure of what
+   * user data is handled and why, shown in the product rather than only in the
+   * privacy policy ("Supplying user data", question 10). Whenever a provider
+   * other than the built-in engine is selected, the tabs being organized leave
+   * the device, so this says so at the point the choice is made.
+   */
+  const dataNotice =
+    ai.provider === "local"
+      ? null
+      : banner(
+          "note",
+          h(
+            "span",
+            null,
+            h("strong", { text: "What leaves your device: " }),
+            "By Category sends the URL and title of the tabs it is organizing to the endpoint you chose here, using your key. Nothing else is sent, and nothing is ever sent to us. Switch to the built-in engine and no network request is made at all.",
+          ),
+        )
+
   const providerCard = card(
     h("h3", { class: "card-title", text: "Provider" }),
     field("AI provider", providerSelect, preset?.docs),
+    dataNotice,
     ai.provider === "custom"
       ? banner(
           "note",

@@ -35,6 +35,10 @@ through any server operated by this project. What that provider does with the
 data is governed by **their** privacy policy, not this one — so choose an endpoint
 you already trust, or use the built-in offline engine, which sends nothing at all.
 
+The same thing is stated **inside the extension**: whenever a provider other than
+the built-in engine is selected, the AI provider section of Settings says what is
+sent and where. You should not have to read a policy to find that out.
+
 If you do not configure a provider, Orbit makes no network requests whatsoever.
 Five of the six organization methods, duplicate cleaning and search are fully
 offline and always have been.

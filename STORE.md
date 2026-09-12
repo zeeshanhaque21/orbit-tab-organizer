@@ -83,48 +83,68 @@ Orbit - AI Tab Organizer
 Group tabs by what they're about, by how recently you used them, or by your own rules. Offline. No account.
 ```
 
-**Category:** Productivity
-
-**Language:** English
-
-**Description:**
+**Description** (plain text, up to 16,000 characters — this is about 3,900):
 
 ```
 Orbit groups your tabs for you, then gets out of the way.
 
+Open thirty tabs and the tab bar stops being a list and becomes a wall. Orbit reads what those tabs are about and sorts them into named, coloured Chrome tab groups — so the thing you are looking for is where you expect it to be.
+
 SIX WAYS TO ORGANIZE
 
-• By Category — groups tabs by what they are actually about (Development,
-  Shopping, Research, News) rather than by which site they came from. Works
-  offline with a built-in classifier; point it at your own AI endpoint for
-  sharper results.
-• By Last Access — sixteen time buckets, from "just now" to "older than 2 days".
-• By Frequency — ranks tabs by how likely you are to want them next, weighted
-  by recency.
-• By Relevance — ranks every tab against the one you are reading.
-• By Topics — you define the categories, by domain, path or keyword.
-• By Memory — learns where you file each site from your own moves.
+By Category
+Groups tabs by what they are actually about — Development, Shopping, Research, News, Finance — rather than by which site they came from. github.com, stackoverflow.com and developer.mozilla.org all belong together, and Orbit knows that. It works offline out of the box using a built-in classifier, and if you have your own AI endpoint you can point it there for sharper results.
 
-BUILT TO BE TRUSTED WITH YOUR TABS
+By Last Access
+Sixteen time buckets, from "just now" through "older than 2 days". A quick way to see what you have abandoned.
 
-• Undo restores the exact arrangement from before a pass, including reopening
-  tabs that were closed.
-• Duplicate cleaning strips tracking parameters before comparing.
-• Everything is local by default. No account, no sign-in, no telemetry, and no
-  network unless you configure an AI provider yourself.
-• Five of the six methods are fully deterministic and work with the network off.
+By Frequency
+Ranks tabs by how likely you are to want them next, weighting recent activity over raw visit counts.
+
+By Relevance
+Ranks every tab against the one you are currently reading.
+
+By Topics
+You define the categories, by domain, path or keyword. "Anything under /pull/ is Code Review." It ships with starter sets so it does something useful on first run.
+
+By Memory
+Learns where you file each site from your own manual moves.
+
+EVERYTHING ELSE
+
+• Undo restores the exact arrangement from before a pass — reopening tabs that were closed, restoring group names, colours and order.
+• Duplicate cleaning strips tracking parameters before comparing, so the same page opened twice is recognised. Send duplicates to a recycle bin or close them outright.
+• Auto-Organize files each new tab as it loads.
+• Saved groups let you snapshot a set of tabs and reopen them later.
+• Keyboard shortcuts for the things you do most.
+• A right-click menu on any tab.
 
 THE HUB
 
-A single view of everything open: windows are spaces, groups are planets, tabs
-are stars. Drag a tab between groups, marquee-select and move in bulk, teleport a
-tab to another window, or flick it to the recycle bin.
+One view of everything open. Windows are spaces, groups are planets, tabs are stars in orbit. Drag a tab from one group to another, marquee-select and move a batch, teleport a tab to a different window, or flick one to the recycle bin. Search highlights matches in place.
 
-Also included: saved groups, an organization score, combine-windows, keyboard
-shortcuts, and a right-click menu.
+PRIVATE BY DEFAULT
 
-90 KB. Plain TypeScript. No framework, no tracking, no paid tier.
+• No account. No sign-in. No telemetry, no analytics, no crash reporting.
+• Nothing is sent anywhere unless you configure an AI endpoint yourself — and then only the tabs being organized, sent directly to your provider with your own key.
+• Five of the six methods, plus duplicate cleaning and search, work completely offline with the network switched off.
+• Everything is stored locally in your browser. Uninstall and it is gone. You can erase it any time from Settings, and export or import your settings as JSON.
+
+SMALL AND FAST
+
+About 90 KB. Plain TypeScript, no framework, no component library. It does not slow your browser down.
+
+WHAT ORBIT DOES NOT DO
+
+• No screenshot capture, so it never needs access to your pages' contents.
+• No access to any site you have not explicitly pointed it at. Broad host access is optional and only requested if you configure a custom AI endpoint.
+• No rating prompts, no promotional banners, no nagging.
+• No paid tier. Every feature is available to everyone.
 ```
+
+**Category:** the dashboard defaults to *Tools*. *Productivity* is the closer fit for a tab manager if it is offered in the list — either is acceptable, so use whichever the dropdown presents.
+
+**Language:** English (United States)
 
 ## Permission justifications
 
